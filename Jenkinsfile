@@ -69,6 +69,7 @@ pipeline {
     post {
         failure {
             updateGitlabCommitStatus(name: "\${env.STAGE_NAME}", state: 'failed')
+            emailext body: 'mail from jenkins on successful failure of the task', subject: '', to: 'edujl2003@gmail.com'
         }
         unstable {
             updateGitlabCommitStatus(name: "\${env.STAGE_NAME}", state: 'failed')
